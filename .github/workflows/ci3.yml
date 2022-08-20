@@ -2,7 +2,7 @@ name: test3
 
 on:
   workflow_run:
-    workflows: ["test2"]
+    workflows: ["test2","test2-1"]
     types:
       - completed
 
