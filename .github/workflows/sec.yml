@@ -1,7 +1,8 @@
 name: 📷 UI Upload
+
 on:
   workflow_run:
-    workflows: ["test"]
+    workflows: ["test2"]
     types:
       - completed
 
