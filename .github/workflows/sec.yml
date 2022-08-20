@@ -1,0 +1,18 @@
+name: 📷 UI Upload
+on:
+  workflow_run:
+    workflows: ["test"]
+    types:
+      - completed
+
+jobs:
+  upload-ui:
+    name: deploy preview
+    runs-on: ubuntu-latest
+    if: >
+      github.event.workflow_run.conclusion == 'success'
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - run: echo 1
