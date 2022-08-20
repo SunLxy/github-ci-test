@@ -24,9 +24,7 @@ jobs:
         echo "version: $VERSION"
         export VERSION
 
-        # node node_modules/.bin/lerna version $VERSION --no-changelog --no-git-tag-version --no-push --yes --force-publish
-        # npm run b:website
-        # npm run b:doc
+        node node_modules/.bin/lerna version $VERSION --no-changelog --no-git-tag-version --no-push --yes --force-publish
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
