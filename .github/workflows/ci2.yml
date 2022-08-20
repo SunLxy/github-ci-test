@@ -3,7 +3,7 @@ name: test2
 on: 
   push:
     branch:
-      - v1
+      - main
 
 jobs:
   build:
