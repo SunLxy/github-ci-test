@@ -32,6 +32,12 @@ jobs:
         git add .
 
         git commit -am $COMMIT
+        
+    - name: Setup credentials
+      # lerna publish 后会提交代码到master分支，这里是为了配置 git 用户，区分用户
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
 
     - name: git push master
       uses: ad-m/github-push-action@master
@@ -39,6 +45,12 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: v1
 
-    - run: |
-        node node_modules/.bin/lerna publish from-package --yes --no-verify-access
-        
+    - name: Publish 🚀
+      run: npm run release
+      # 利用 automation token publish 至 npm，这里NPM_TOKEN 就是我们上文中设定的
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+    # - run: |
+    #     node node_modules/.bin/lerna publish from-package --yes --no-verify-access
+    #   env:
+    #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
