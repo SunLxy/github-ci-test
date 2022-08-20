@@ -2,8 +2,8 @@ name: test
 
 on: 
   push:
-    branch:
-      - v1
+    tags:
+      - v1*
 
 jobs:
   build:
@@ -16,22 +16,22 @@ jobs:
 
     - run: npm i
     
-    # - run: |
-    #     # Strip git ref prefix from version
-    #     VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-    #     COMMIT=released-${VERSION}
+    - run: |
+        # Strip git ref prefix from version
+        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+        COMMIT=released-${VERSION}
  
-    #     # Strip "v" prefix from tag name
-    #     [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-    #     echo "version: $VERSION"
-    #     export VERSION
+        # Strip "v" prefix from tag name
+        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+        echo "version: $VERSION"
+        export VERSION
 
-    #     node node_modules/.bin/lerna version $VERSION --no-changelog --no-git-tag-version --no-push --yes --force-publish
-    #     git config --local user.email "action@github.com"
-    #     git config --local user.name "GitHub Action"
-    #     git add .
+        node node_modules/.bin/lerna version $VERSION --no-changelog --no-git-tag-version --no-push --yes --force-publish
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
 
-    #     git commit -am $COMMIT
+        git commit -am $COMMIT
         
     - run: npm config get registry     
     
@@ -46,11 +46,11 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
 
-    # - name: git push master
-    #   uses: ad-m/github-push-action@master
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     branch: v1
+    - name: git push master
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: v1
 
     - name: Publish 🚀
       uses: SunLxy/npm-publish@main
@@ -58,6 +58,7 @@ jobs:
         token: ${{secrets.NPM_TOKEN}}
         # package: ./packages/a/package.json
         cwd: packages
+        tag: bate
         
     # - run: |
     #     node node_modules/.bin/lerna publish from-package --yes --no-verify-access
