@@ -45,6 +45,16 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: v1
 
+    - name: Publish 🚀
+      uses: SunLxy/npm-publish@main
+      env:
+        token: ${{secrets.NPM_TOKEN}}
+        cwd: /packages
+        
+    # - run: |
+    #     node node_modules/.bin/lerna publish from-package --yes --no-verify-access
+    #   env:
+    #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
     # - name: Publish 🚀
     #   run: npm run release
     #   # 利用 automation token publish 至 npm，这里NPM_TOKEN 就是我们上文中设定的
