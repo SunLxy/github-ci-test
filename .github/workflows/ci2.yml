@@ -16,8 +16,8 @@ jobs:
 
     - run: npm i
 
-    - name: 📦 publish to NPM
-      uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-        package: ./package.json
+    # - name: 📦 publish to NPM
+    #   uses: JS-DevTools/npm-publish@v1
+    #   with:
+    #     token: ${{ secrets.NPM_TOKEN }}
+    #     package: ./package.json
