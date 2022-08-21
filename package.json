@@ -1,7 +1,7 @@
 {
   "name": "github-ci-test",
   "version": "1.0.5",
-  "description": "这是一个测试包1",
+  "description": "这是一个测试包",
   "main": "index.js",
   "keywords": [],
   "author": "",
