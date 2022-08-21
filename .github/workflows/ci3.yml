@@ -15,6 +15,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
-      - run: echo 1
-      - run: ls -a 
-      - run: echo ${{ github.event.workflow_run.conclusion }}
+#       - run: echo 1
+#       - run: ls -a 
+#       - run: echo ${{ github.event.workflow_run.conclusion }}

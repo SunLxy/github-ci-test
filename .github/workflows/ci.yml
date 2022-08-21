@@ -2,8 +2,8 @@ name: test
 
 on: 
   push:
-    tags:
-      - v1*
+    branch:
+      - v1
 
 jobs:
   build:
@@ -16,22 +16,22 @@ jobs:
 
     - run: npm i
     
-    - run: |
-        # Strip git ref prefix from version
-        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-        COMMIT=released-${VERSION}
+    # - run: |
+    #     # Strip git ref prefix from version
+    #     VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+    #     COMMIT=released-${VERSION}
  
-        # Strip "v" prefix from tag name
-        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-        echo "version: $VERSION"
-        export VERSION
+    #     # Strip "v" prefix from tag name
+    #     [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+    #     echo "version: $VERSION"
+    #     export VERSION
 
-        node node_modules/.bin/lerna version $VERSION --no-changelog --no-git-tag-version --no-push --yes --force-publish
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add .
+        # node node_modules/.bin/lerna version $VERSION --no-changelog --no-git-tag-version --no-push --yes --force-publish
+        # git config --local user.email "action@github.com"
+        # git config --local user.name "GitHub Action"
+        # git add .
 
-        git commit -am $COMMIT
+        # git commit -am $COMMIT
         
     - name: Setup credentials
       # lerna publish 后会提交代码到master分支，这里是为了配置 git 用户，区分用户
@@ -39,18 +39,23 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
 
-    - name: git push master
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: v1
+    # - name: git push master
+    #   uses: ad-m/github-push-action@master
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     branch: v1
 
     - name: Publish 🚀
       uses: SunLxy/npm-publish@main
       env:
         token: ${{secrets.NPM_TOKEN}}
-        cwd: /packages
-        
+        cwd: packages
+
+    # - name: Publish 🚀
+    #   run: npm run release
+    #   # 利用 automation token publish 至 npm，这里NPM_TOKEN 就是我们上文中设定的
+    #   env:
+    #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
     # - run: |
     #     node node_modules/.bin/lerna publish from-package --yes --no-verify-access
     #   env:

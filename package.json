@@ -1,12 +1,8 @@
 {
   "name": "github-ci-test",
   "version": "1.0.5",
-  "description": "这是一个测试包1",
+  "description": "这是一个测试包",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "lerna publish --yes --no-verify-access"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
