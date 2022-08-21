@@ -1,9 +1,9 @@
-# name: test2-2
+name: test2-2
 
-# on: 
-#   push:
-#     branch:
-#       - v2
+on: 
+  push:
+    branch:
+      - v2
 
 # jobs:
 #   build:
