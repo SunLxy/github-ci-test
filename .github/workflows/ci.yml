@@ -49,7 +49,7 @@ jobs:
       uses: SunLxy/npm-publish@main
       with:
         token: ${{secrets.NPM_TOKEN}}
-        cwd: /packages
+        cwd: packages
         
     # - run: |
     #     node node_modules/.bin/lerna publish from-package --yes --no-verify-access
