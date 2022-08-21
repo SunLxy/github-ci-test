@@ -33,6 +33,13 @@ jobs:
 
         git commit -am $COMMIT
         
+    - run: npm config get registry     
+    
+    - name: npm config registry
+      run: npm config set registry https://registry.npmjs.org/
+
+    - run: npm config get registry     
+
     - name: Setup credentials
       # lerna publish 后会提交代码到master分支，这里是为了配置 git 用户，区分用户
       run: |
