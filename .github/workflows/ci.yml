@@ -58,7 +58,6 @@ jobs:
         token: ${{secrets.NPM_TOKEN}}
         # package: ./packages/a/package.json
         cwd: packages
-        tag: bate
         
     # - run: |
     #     node node_modules/.bin/lerna publish from-package --yes --no-verify-access
