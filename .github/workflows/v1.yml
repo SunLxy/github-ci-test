@@ -1,0 +1,75 @@
+name: v1
+
+on: 
+  push:
+    tags:
+      - v1.[0-9].[0-9]$
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14 
+
+    - run: npm i
+    
+    - run: |
+        # Strip git ref prefix from version
+        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+        COMMIT=released-${VERSION}
+ 
+        # Strip "v" prefix from tag name
+        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+        echo "version: $VERSION"
+        export VERSION
+
+        node node_modules/.bin/lerna version $VERSION --no-changelog --no-git-tag-version --no-push --yes --force-publish
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+
+        git commit -am $COMMIT
+        
+    - run: npm config get registry     
+    
+    - name: npm config registry
+      run: npm config set registry https://registry.npmjs.org/
+
+    - run: npm config get registry     
+
+    - name: Setup credentials
+      # lerna publish 后会提交代码到master分支，这里是为了配置 git 用户，区分用户
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+
+    - name: git push master
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: v1
+
+    - name: Publish 🚀
+      uses: SunLxy/npm-publish@main
+      with:
+        token: ${{secrets.NPM_TOKEN}}
+        # package: ./packages/a/package.json
+        cwd: packages
+        tag: rc
+        
+    # - run: |
+    #     node node_modules/.bin/lerna publish from-package --yes --no-verify-access
+    #   env:
+    #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+    # - name: Publish 🚀
+    #   run: npm run release
+    #   # 利用 automation token publish 至 npm，这里NPM_TOKEN 就是我们上文中设定的
+    #   env:
+    #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+    # # - run: |
+    # #     node node_modules/.bin/lerna publish from-package --yes --no-verify-access
+    # #   env:
+    # #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

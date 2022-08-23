@@ -1,9 +1,9 @@
-name: test
+name: v1-rc
 
 on: 
   push:
     tags:
-      - v1*
+      - v1*-rc-*
 
 jobs:
   build:
@@ -58,7 +58,7 @@ jobs:
         token: ${{secrets.NPM_TOKEN}}
         # package: ./packages/a/package.json
         cwd: packages
-        tag: bate
+        tag: rc
         
     # - run: |
     #     node node_modules/.bin/lerna publish from-package --yes --no-verify-access
