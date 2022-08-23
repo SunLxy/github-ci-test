@@ -2,5 +2,5 @@
   "packages": [
     "packages/*"
   ],
-  "version": "1.0.10-bate-33"
+  "version": "1.0.10-rc-1"
 }
