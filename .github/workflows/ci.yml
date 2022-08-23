@@ -3,7 +3,7 @@ name: test
 on: 
   push:
     tags:
-      - v1*
+      - v1*bate*
 
 jobs:
   build:
