@@ -8,6 +8,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "lerna": "^4.0.0",
+    "fast-glob": "^3.2.11",
+    "micromatch": "^4.0.5"
   }
 }

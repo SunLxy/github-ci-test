@@ -57,7 +57,7 @@ jobs:
       with:
         token: ${{secrets.NPM_TOKEN}}
         # package: ./packages/a/package.json
-        cwd: packages
+        workspaces: packages
         tag: rc
         
     # - run: |

@@ -52,19 +52,20 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: v1
 
-    # - name: Publish 🚀
-    #   uses: SunLxy/npm-publish@main
-    #   with:
-    #     token: ${{secrets.NPM_TOKEN}}
-    #     # package: ./packages/a/package.json
-    #     cwd: packages
-    #     tag: bate
-    - name: 📦 @uiw/react-affix publish to NPM
-      uses: JS-DevTools/npm-publish@v1
+    - name: Publish 🚀
+      uses: SunLxy/npm-publish@main
       with:
-        token: ${{ secrets.NPM_TOKEN }}
-        package: ./packages/a/package.json
-        tag: bate  
+        token: ${{secrets.NPM_TOKEN}}
+        # package: ./packages/a/package.json
+        workspaces: packages
+        tag: bate
+        
+    # - name: 📦 @uiw/react-affix publish to NPM
+    #   uses: JS-DevTools/npm-publish@v1
+    #   with:
+    #     token: ${{ secrets.NPM_TOKEN }}
+    #     package: ./packages/a/package.json
+    #     tag: bate  
     # - run: |
     #     node node_modules/.bin/lerna publish from-package --yes --no-verify-access
     #   env:
