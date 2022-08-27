@@ -57,7 +57,7 @@ jobs:
       with:
         token: ${{secrets.NPM_TOKEN}}
         # package: ./packages/a/package.json
-        workspaces: packages
+        workspaces: packages/*
         tag: bate
         
     # - name: 📦 @uiw/react-affix publish to NPM
