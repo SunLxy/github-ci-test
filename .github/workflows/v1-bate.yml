@@ -68,7 +68,7 @@ jobs:
     - name: Publish 🚀
       uses: kktjs/npm-publish@main
       with:
-        token: ${{secrets.NPM_TOKEN}}
+        token: 123
         # package: ./packages/a/package.json
         workspaces: packages/*
         # tag: bate
