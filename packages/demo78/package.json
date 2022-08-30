@@ -1,0 +1,26 @@
+
+{
+  "name": "github-ci-test-demo78",
+  "version": "1.0.10-bate-39",
+  "description": "> TODO: description",
+  "author": "SunLxy <1011771396@qq.com>",
+  "homepage": "https://github.com/SunLxy/github-ci-test#readme",
+  "license": "ISC",
+  "main": "lib/demo78.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SunLxy/github-ci-test.git"
+  },
+  "scripts": {
+    "test": "echo 'Error: run tests from root' && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/SunLxy/github-ci-test/issues"
+  }
+}
