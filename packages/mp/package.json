@@ -1,0 +1,30 @@
+{
+  "name": "@icongo/mp",
+  "description": "Map Icons",
+  "version": "1.1.0",
+  "main": "./lib/index.js",
+  "module": "./esm/index.js",
+  "types": "./lib/index.d.ts",
+  "sideEffects": false,
+  "homepage": "http://icongo.github.io/#/icons/mp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/icongo.git"
+  },
+  "scripts": {
+    "cpy": "cpy '../../www/public/icons/mp/*.svg' svg --flat",
+    "icongo": "icongo --prefix MP --source svg -o ./src",
+    "build": "npm run cpy && npm run icongo && tsbb build --no-source-maps",
+    "start": "npm run build"
+  },
+  "keywords": [
+    "icongo",
+    "mp",
+    "map",
+    "react-icons",
+    "icons",
+    "icon"
+  ],
+  "author": "jaywcjlove",
+  "license": "MIT"
+}
