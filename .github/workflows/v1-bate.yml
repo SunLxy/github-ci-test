@@ -59,7 +59,7 @@ jobs:
 
     - run: npm config get userconfig
 
-    - run: rm -rf /home/runner/.npmrc
+    # - run: rm -rf /home/runner/.npmrc
 
     - run:  npm config ls -l
 
