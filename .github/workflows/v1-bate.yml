@@ -66,7 +66,7 @@ jobs:
     - run: npm config get userconfig
 
     - name: Publish 🚀
-      uses: kktjs/npm-publish@main
+      uses: SunLxy/npm-publish@main
       with:
         token: 123
         # package: ./packages/a/package.json
