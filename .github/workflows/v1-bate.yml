@@ -2,8 +2,8 @@ name: v1-bate
 
 on: 
   push:
-    tags:
-      - v1*-bate-*
+    branch:
+      - v1
 
 jobs:
   build:
