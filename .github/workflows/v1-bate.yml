@@ -56,6 +56,8 @@ jobs:
 
     - run: rm -rf /home/runner/.npmrc
 
+    - run: npm config get userconfig
+
     - name: Publish 🚀
       uses: kktjs/npm-publish@main
       with:
