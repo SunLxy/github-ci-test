@@ -7,7 +7,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "version": "lerna version --exact --no-changelog"
+    "version": "lerna version --exact --force-publish --no-git-tag-version"
   },
   "devDependencies": {
     "fast-glob": "^3.2.11",
