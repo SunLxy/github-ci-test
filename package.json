@@ -1,15 +1,19 @@
 {
   "name": "github-ci-test",
   "version": "1.0.5",
-  "private": true,
   "description": "这是一个测试包",
   "main": "index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "version": "lerna version --exact --no-changelog"
+  },
   "devDependencies": {
-    "lerna": "^4.0.0",
     "fast-glob": "^3.2.11",
-    "micromatch": "^4.0.5"
+    "lerna": "^4.0.0",
+    "libnpmpublish": "^6.0.4",
+    "micromatch": "^4.0.5",
+    "pacote": "^13.6.2"
   }
 }
