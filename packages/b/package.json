@@ -1,6 +1,6 @@
 {
   "name": "github-ci-test-b",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "> TODO: description",
   "author": "SunLxy <1011771396@qq.com>",
   "homepage": "https://github.com/SunLxy/github-ci-test#readme",
@@ -11,7 +11,7 @@
     "test": "__tests__"
   },
   "dependencies": {
-    "github-ci-test-a": "1.0.10"
+    "github-ci-test-a": "1.0.11"
   },
   "files": [
     "lib"
