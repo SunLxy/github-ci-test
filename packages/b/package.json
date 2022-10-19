@@ -11,7 +11,8 @@
     "test": "__tests__"
   },
   "dependencies": {
-    "github-ci-test-a": "1.0.12"
+    "github-ci-test-a": "1.0.12",
+    "github-ci-test-demo1": "1.0.12"
   },
   "files": [
     "lib"
